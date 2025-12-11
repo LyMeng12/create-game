@@ -7,37 +7,27 @@ public class Main {
 
 
 
-    static int mama(String[] Row,int place){
-        if(Row[0].equals(Row[1]) && Row[1].equals(Row[2])){
-            return switch (Row[0]){
-                case "🍎" -> place *2;
-                case "🍊" -> place*3;
-                case "🍓" -> place*3;
-                case "🍒" -> place*3;
-                case "⭐" -> place*10;
-                default -> 0;
-            };
-//            System.out.println("");
-        }
-        return 0;
-    }
-    static void diplay(int place){
-        String[] items = {"🍎","🍊","🍓","🍒","⭐"};
+    static String[] Ramdo(int place ,int win){
+        String[] item = {"🍎","🍊","🍓","🍒","⭐",};
         Random random = new Random();
-        String[] Row=new String[3];
+        String[] row = new String[3];
+        for (int i = 0; i < 3; i++) {
+            row[i] = item[random.nextInt(item.length)];
+        }
+        System.out.println("*****************");
+        for (int i = 0; i < row.length; i++) {
+            System.out.print("| ");
+            System.out.print(row[i]+" ");
 
-        for(int i=0;i<3;i++){
-            Row[i]=items[random.nextInt(items.length)];
         }
-        for(int i=0;i<3;i++){
-            System.out.print(" "+"| "+Row[i]);
-        }
-        System.out.print(" |");
+        System.out.print("|");
         System.out.println();
-        mama(Row , place);
-        System.out.println("You have"+place);
-    }
+        System.out.println("*****************");
 
+        display(row,place,win);
+
+        return  row;
+    }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("How Many$:");
@@ -45,15 +35,54 @@ public class Main {
 
         boolean play = true ;
         while (play){
+            int win = 0;
+
             System.out.println("Current balance:"+meny+"$");
             System.out.print("Place Your amount:");
             int place = in.nextInt();
             meny = meny - place;
-            System.out.println("Spinning...");
-            System.out.println("*****************");
             System.out.println("🍎 🍊 🍓 🍒 ⭐");
-            diplay(place);
-//            meme();
+            System.out.println("Spinning...");
+
+
+            Ramdo(place,win);
+            meny = meny + win;
+
+            if( meny <= 0){
+                System.out.print("You want to play again(y/n):");
+                String answer = in.next().toLowerCase();
+                while (!answer.equals("y") && !answer.equals("n")){
+                    System.out.print("Choose again(y/n):");
+                    answer = in.next().toLowerCase();
+                }
+                if(answer.equals("y")){
+                    System.out.print("Input Your Balance:");
+                    meny = in.nextInt();
+                } else if (answer.equals("n")) {
+                    play = false;
+                }
+
+            }
+        }
+        System.out.println("Thank you for play!");
+
+    }
+    static void display(String[] row, int place, int win){
+        if(row[0].equals(row[1]) && row[1].equals(row[2])){
+            switch(row[row.length-1]){
+                case "🍎":
+                case "🍊":
+                case "🍓":
+                case "🍒":
+                    place = place * 3;
+                    win = place;
+                    break;
+                case "⭐":
+                    place = place * 10;
+                    win = place;
+                    break;
+            }
+            System.out.println("You win :" + win + "$");
         }
 
     }
