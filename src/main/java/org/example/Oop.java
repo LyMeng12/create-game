@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Oop {
 
@@ -13,125 +10,96 @@ public class Oop {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-//        data
-        ArrayList<Student> students = new ArrayList<>();
-        ArrayList<Course> courses = new ArrayList<>();
-        boolean go=true;
-        do {
-            System.out.println("**********************************************");
-            System.out.println();
-            System.out.println("Welcome to Student Management SETEC INSTITUTE");
-            System.out.println();
-            System.out.println("**********************************************");
-            System.out.println("\tThis is a student management System");
-            System.out.println("1.New Student");
-            System.out.println("2.Add Course");
-            System.out.println("3.Register students for courses");
-            System.out.println("4.Show list of students in the subject");
-            System.out.println("5.Remove students from courses");
-            System.out.println("6.Exit");
-            System.out.print("Choose an option: ");
-            int choose = sc.nextInt();
-            switch (choose){
-//                New Student
-                case 1:{
-
-                    int id = 1;
-                    boolean done=true;
-                    do {
-                        System.out.print("Enter Your name: ");
-                        String name = sc.next();
-                        System.out.print("Enter Your age: ");
-                        int age = sc.nextInt();
-                        System.out.print("Enter Your Gender: ");
-                        String gender = sc.next().toLowerCase();
-                        while (!gender.equals("male") && !gender.equals("female")){
-                            System.out.print("Enter Your Gender Again: ");
-                            gender = sc.next();
-                        }
-                        System.out.print("Enter Your Phone Number: ");
-                        int phone = sc.nextInt();
-                        System.out.println("**********************************");
-                        for (Course c : courses){
-                            c.diplay();
-                        }
-                        System.out.println("**********************************");
-                        boolean chack=true;
-                        String nameMajoring="";
-                        int idMajoring=0;
+        String[] nameAdmin =  {"meng","admin"};
+        String[] passwordAdmin = {"meng123","admin123"};
+        LinkedList<Student> student = new LinkedList<>();
+        LinkedList<Major> major = new LinkedList<>();
+        boolean done = true;
+        System.out.println("****************************************");
+        System.out.println();
+        System.out.println("\tWelcome to SETCE Institute");
+        System.out.println();
+        System.out.println("****************************************");
+//        System.out.println("This my School Management System.");
+        while (done){
+//            if(major.size() == 0){
+//                boolean check = true;
+//                do {
+//                    int id=1;
+//                    System.out.print("Please enter a major name: ");
+//                    String majorName = sc.next();
+//                    major.add(new Major(id, majorName));
+//                    if(major.size() == 1){
+//                        System.out.println("Add Major successfully!");
+//                        check = false;
+//                    }if(major.size() == 0){
+//                        System.out.println("Not add Major successfully!");
+//                    }
+//                }while(check);
+//            } else if (major.size() != 0) {
+                System.out.println("This my School Management System.");
+                System.out.println("1. New Student.");
+                System.out.println("2. Add Major.");
+                System.out.println("3. Login Admin.");
+                System.out.println("4. Exit Program.");
+                System.out.print("Please Choose an Option: ");
+                int option = sc.nextInt();
+                switch (option){
+                    case 1:{
+                        System.out.print("Please enter the major name: ");
+                    }break;
+                    case 2:{
+                        System.out.print("Please enter the major name: ");
+                    }break;
+                    case 3:{
+                        String username = "";
+                        boolean login = true;
                         do {
-                            System.out.print("Enter ID Majoring: ");
-                            int idmajor = sc.nextInt();
-                            while (idmajor <0 || idmajor >courses.size()){
-                                System.out.print("Enter ID Majoring again: ");
-                                idmajor = sc.nextInt();
-                            }
+                            System.out.print("Enter your Name: ");
+                            String newName = sc.next().toLowerCase();
+                            System.out.print("Please enter your password: ");
+                            String newPassword = sc.next().toLowerCase();
 
-                            for (Course c : courses){
-                                if(c.getCourseID() == idmajor){
-                                    chack=false;
-                                    idMajoring=idmajor;
-                                    nameMajoring= c.Coursename;
+                            for (int i = 0; i < 2; i++) {
+                                if (nameAdmin[i].equals(newName) && passwordAdmin[i].equals(newPassword)){
+                                    login = false;
+                                    username = nameAdmin[i];
                                 }
                             }
 
-                        }while(chack);
-                        students.add(new Student(nameMajoring, idMajoring, id, name, age, gender, phone));
-                        id++;
-                        System.out.print("Add student more (y/n): ");
-                        String answer = sc.next().toLowerCase();
-                        while (!answer.equals("y") && !answer.equals("n")){
-                            System.out.print("Enter Your Choice: ");
-                            answer = sc.next();
-                        }
-                        if (answer.equals("y")){
-                            done=true;
-                        } else if (answer.equals("n")) {
-                            done=false;
-                        }
-                    }while (done);
-                }break;
-//                add course
-                case 2:{
-                    int id=1;
-                    boolean done=true;
-                    do {
-                        System.out.println("Add Course");
-
-                        System.out.print("Enter Name Course: ");
-                        String name =sc.next();
-                        courses.add(new Course(id,name));
-                        id++;
-                        System.out.print("Add more Courses(y/n):");
-                        String n =sc.next().toLowerCase();
-                        while (!n.equals("y") && !n.equals("n")){
-                            System.out.println("Add Course again: ");
-                            n =sc.next().toLowerCase();
-                        }
-                        if (n.equals("y")){
-                            done=true;
-                        } else if (n.equals("n")) {
-                            done=false;
-                        }
-                    }while(done);
-                }break;
-                case 3:{
-                    for(Course c : courses){
-                        c.diplay();
-                    }
-                }break;
-                case 4:{
-                    System.out.println(students.size());
-                    for(Student s : students){
-                        s.display();
-                    }
-                }break;
-                case 5:{}break;
-                case 6:{
-                    go=false;
-                }break;
-            };
-        }while (go);
+                        }while (login);
+                        System.out.println("Login Successful!");
+                        System.out.println("Welcome "+username);
+                        boolean system = true;
+                        do{
+                            System.out.println("1.Student");
+                            System.out.println("2.Major");
+                            System.out.println("3.Display");
+                            System.out.println("4.Exit Admin");
+                            System.out.print("Please Choose an Option: ");
+                            int adminoption = sc.nextInt();
+                            switch (adminoption){
+                                case 1:{
+                                    System.out.println("Please enter your Name: ");
+                                }break;
+                                case 2:{
+                                    System.out.println("Please enter your password: ");
+                                }break;
+                                case 3:{
+                                    System.out.println("Enter your Name: ");
+                                }break;
+                                case 4:{
+                                    system = false;
+                                }break;
+                            }
+                        }while (system);
+                    }break;
+                    case 4:{
+                        done = false;
+                    }break;
+                }
+//            }
+        }
+        System.out.println("System Program Terminated.");
     }
 }
