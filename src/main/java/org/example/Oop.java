@@ -17,7 +17,6 @@ public class Oop {
 //        data
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Course> courses = new ArrayList<>();
-
         boolean go=true;
         do {
             System.out.println("**********************************************");
@@ -37,9 +36,8 @@ public class Oop {
             switch (choose){
 //                New Student
                 case 1:{
-                    ArrayList<Course> newCourses = new ArrayList<>();
+
                     int id = 1;
-                    int qty =0;
                     boolean done=true;
                     do {
                         System.out.print("Enter Your name: ");
@@ -47,38 +45,39 @@ public class Oop {
                         System.out.print("Enter Your age: ");
                         int age = sc.nextInt();
                         System.out.print("Enter Your Gender: ");
-                        String gender = sc.next();
+                        String gender = sc.next().toLowerCase();
+                        while (!gender.equals("male") && !gender.equals("female")){
+                            System.out.print("Enter Your Gender Again: ");
+                            gender = sc.next();
+                        }
                         System.out.print("Enter Your Phone Number: ");
                         int phone = sc.nextInt();
                         System.out.println("**********************************");
                         for (Course c : courses){
-                            if(c.getCourseqty()==40){
-                                c.diplay();
-                                System.out.println("Full😱");
-                            } else if (c.getCourseqty()<40) {
-                                c.diplay();
-                            }
+                            c.diplay();
                         }
                         System.out.println("**********************************");
-                        System.out.print("Enter Your Course(ID): ");
-                        int course =sc.nextInt();
-                        while (course < 1 || course > courses.size()){
-                            System.out.println("Invalid Course");
-                            System.out.print("Enter Your Course(ID) again: ");
-                            course =sc.nextInt();
-                        }
-                        for (Course c : courses){
-                            if(c.getCourseID()==course){
-                                if(c.getCourseqty()==40){
-                                    System.out.println("This course already exists");
-                                } else if (c.getCourseqty()>40) {
-                                    newCourses.add(c);
-                                    qty++;
-                                    students.add(new Student(c.getCoursename(),c.getCourseID(),qty,id, name, age, gender, phone));
+                        boolean chack=true;
+                        String nameMajoring="";
+                        int idMajoring=0;
+                        do {
+                            System.out.print("Enter ID Majoring: ");
+                            int idmajor = sc.nextInt();
+                            while (idmajor <0 || idmajor >courses.size()){
+                                System.out.print("Enter ID Majoring again: ");
+                                idmajor = sc.nextInt();
+                            }
+
+                            for (Course c : courses){
+                                if(c.getCourseID() == idmajor){
+                                    chack=false;
+                                    idMajoring=idmajor;
+                                    nameMajoring= c.Coursename;
                                 }
                             }
-                        }
-                        newCourses.clone();
+
+                        }while(chack);
+                        students.add(new Student(nameMajoring, idMajoring, id, name, age, gender, phone));
                         id++;
                         System.out.print("Add student more (y/n): ");
                         String answer = sc.next().toLowerCase();
@@ -95,7 +94,6 @@ public class Oop {
                 }break;
 //                add course
                 case 2:{
-                    int qty=39;
                     int id=1;
                     boolean done=true;
                     do {
@@ -103,7 +101,7 @@ public class Oop {
 
                         System.out.print("Enter Name Course: ");
                         String name =sc.next();
-                        courses.add(new Course(id,name,qty));
+                        courses.add(new Course(id,name));
                         id++;
                         System.out.print("Add more Courses(y/n):");
                         String n =sc.next().toLowerCase();
@@ -111,7 +109,6 @@ public class Oop {
                             System.out.println("Add Course again: ");
                             n =sc.next().toLowerCase();
                         }
-                        qty++;
                         if (n.equals("y")){
                             done=true;
                         } else if (n.equals("n")) {
@@ -119,8 +116,17 @@ public class Oop {
                         }
                     }while(done);
                 }break;
-                case 3:{}break;
-                case 4:{}break;
+                case 3:{
+                    for(Course c : courses){
+                        c.diplay();
+                    }
+                }break;
+                case 4:{
+                    System.out.println(students.size());
+                    for(Student s : students){
+                        s.display();
+                    }
+                }break;
                 case 5:{}break;
                 case 6:{
                     go=false;
