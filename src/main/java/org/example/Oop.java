@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Oop {
@@ -49,11 +50,12 @@ public class Oop {
                         String gender = sc.next();
                         System.out.print("Enter Your Phone Number: ");
                         int phone = sc.nextInt();
+                        System.out.println("**********************************");
                         for (Course c : courses){
                             if(c.getCourseqty()==40){
                                 c.diplay();
                                 System.out.println("Full😱");
-                            } else if (c.getCourseqty()>40) {
+                            } else if (c.getCourseqty()<40) {
                                 c.diplay();
                             }
                         }
@@ -67,19 +69,56 @@ public class Oop {
                         }
                         for (Course c : courses){
                             if(c.getCourseID()==course){
-                                newCourses.add(c);
-                                qty++;
-                                students.add(new Student(c.getCoursename(),c.getCourseID(),qty,id, name, age, gender, phone));
+                                if(c.getCourseqty()==40){
+                                    System.out.println("This course already exists");
+                                } else if (c.getCourseqty()>40) {
+                                    newCourses.add(c);
+                                    qty++;
+                                    students.add(new Student(c.getCoursename(),c.getCourseID(),qty,id, name, age, gender, phone));
+                                }
                             }
                         }
                         newCourses.clone();
-
-
                         id++;
-
+                        System.out.print("Add student more (y/n): ");
+                        String answer = sc.next().toLowerCase();
+                        while (!answer.equals("y") && !answer.equals("n")){
+                            System.out.print("Enter Your Choice: ");
+                            answer = sc.next();
+                        }
+                        if (answer.equals("y")){
+                            done=true;
+                        } else if (answer.equals("n")) {
+                            done=false;
+                        }
                     }while (done);
                 }break;
-                case 2:{}break;
+//                add course
+                case 2:{
+                    int qty=39;
+                    int id=1;
+                    boolean done=true;
+                    do {
+                        System.out.println("Add Course");
+
+                        System.out.print("Enter Name Course: ");
+                        String name =sc.next();
+                        courses.add(new Course(id,name,qty));
+                        id++;
+                        System.out.print("Add more Courses(y/n):");
+                        String n =sc.next().toLowerCase();
+                        while (!n.equals("y") && !n.equals("n")){
+                            System.out.println("Add Course again: ");
+                            n =sc.next().toLowerCase();
+                        }
+                        qty++;
+                        if (n.equals("y")){
+                            done=true;
+                        } else if (n.equals("n")) {
+                            done=false;
+                        }
+                    }while(done);
+                }break;
                 case 3:{}break;
                 case 4:{}break;
                 case 5:{}break;

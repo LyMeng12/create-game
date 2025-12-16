@@ -16,4 +16,7 @@ public class Student extends Course{
         this.gender = gender;
         this.phone = phone;
     }
+    public void display() {
+        System.out.println("Name: " + name + " Age: " + age + " Gender: " + gender + " Phone: " + phone + " course: " + Coursename);
+    }
 }
