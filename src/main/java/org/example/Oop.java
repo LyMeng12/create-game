@@ -12,7 +12,7 @@ public class Oop {
         Scanner sc = new Scanner(System.in);
         String[] nameAdmin =  {"meng","admin"};
         String[] passwordAdmin = {"meng123","admin123"};
-        LinkedList<Student> student = new LinkedList<>();
+        ArrayList<Student> students = new ArrayList<>();
         LinkedList<Major> major = new LinkedList<>();
         boolean done = true;
         System.out.println("****************************************");
@@ -22,21 +22,6 @@ public class Oop {
         System.out.println("****************************************");
 //        System.out.println("This my School Management System.");
         while (done){
-//            if(major.size() == 0){
-//                boolean check = true;
-//                do {
-//                    int id=1;
-//                    System.out.print("Please enter a major name: ");
-//                    String majorName = sc.next();
-//                    major.add(new Major(id, majorName));
-//                    if(major.size() == 1){
-//                        System.out.println("Add Major successfully!");
-//                        check = false;
-//                    }if(major.size() == 0){
-//                        System.out.println("Not add Major successfully!");
-//                    }
-//                }while(check);
-//            } else if (major.size() != 0) {
                 System.out.println("This my School Management System.");
                 System.out.println("1. New Student.");
                 System.out.println("2. Add Major.");
@@ -46,10 +31,34 @@ public class Oop {
                 int option = sc.nextInt();
                 switch (option){
                     case 1:{
-                        System.out.print("Please enter the major name: ");
+                        int id =1;
+                        for (int i = 0; i < students.size(); i++){
+                            id++;
+                        }
+                        System.out.print("Please enter the Student name: ");
+                        String name = sc.next();
+                        System.out.print("Please enter the Student Gender: ");
+                        String gender = sc.next();
+                        while (!gender.equals("male") && !gender.equals("female")){
+                            System.out.print("Please enter again the Student Gender: ");
+                            gender = sc.next();
+                        }
+                        System.out.print("Please enter the Student Age: ");
+                        int age = sc.nextInt();
+                        System.out.print("Please enter the Student Phone Number: ");
+                        String phone = sc.next();
+                        students.add(new Student(id,name,gender,age,phone));
                     }break;
                     case 2:{
-                        System.out.print("Please enter the major name: ");
+                        System.out.println("********************************");
+                        for (Major m : major){
+                            m.Display();
+                        }
+                        System.out.println("********************************");
+                        for (Student student : students){
+                            student.diplayStudent();
+                        }
+                        System.out.println("********************************");
                     }break;
                     case 3:{
                         String username = "";
@@ -69,9 +78,10 @@ public class Oop {
 
                         }while (login);
                         System.out.println("Login Successful!");
-                        System.out.println("Welcome "+username);
+
                         boolean system = true;
                         do{
+                            System.out.println("Welcome Admin "+username+ " 🦦");
                             System.out.println("1.Student");
                             System.out.println("2.Major");
                             System.out.println("3.Display");
@@ -83,7 +93,61 @@ public class Oop {
                                     System.out.println("Please enter your Name: ");
                                 }break;
                                 case 2:{
-                                    System.out.println("Please enter your password: ");
+                                    boolean match = true;
+                                    do {
+                                        System.out.println("This is a Major");
+                                        System.out.println("1.Add Major");
+                                        System.out.println("2.Edit Major");
+                                        System.out.println("3.Delete Major");
+                                        System.out.println("4.Exit");
+                                        System.out.print("Please Choose an Option: ");
+                                        int choose = sc.nextInt();
+                                        switch (choose){
+                                            case 1:{
+                                                int idmajor = 1;
+                                                int qty=0;
+                                                for (int i = 0; i < major.size(); i++){
+                                                    idmajor++;
+                                                }
+                                                String namemajor="";
+                                                boolean checkmajorname = true;
+                                                do {
+                                                    System.out.print("Please enter the Major Name: ");
+                                                    String name = sc.next().toUpperCase();
+
+                                                    if (major.size()==0){
+                                                        checkmajorname = false;
+                                                        namemajor=name;
+
+                                                    }if (major.size()!=0){
+                                                        checkmajorname = false;
+                                                        for (Major maj : major) {
+                                                            if (maj.getMajorName().equalsIgnoreCase(name)) {
+                                                                checkmajorname = true; // duplicate found
+                                                                System.out.println("Major name already exists! Please enter again.");
+                                                                break;
+                                                            }
+                                                        }
+
+                                                        if (!checkmajorname) {
+                                                            namemajor = name; // valid name
+                                                        }
+                                                    }
+                                                }while (checkmajorname);
+                                                major.add(new Major(idmajor,namemajor,qty));
+                                            }break;
+                                            case 2:{
+                                                for (Major maj : major) {
+                                                    maj.Display();
+                                                }
+                                            }break;
+                                            case 3:{}break;
+                                            case 4:{
+                                                match = false;
+                                            }break;
+                                        }
+                                    }while (match);
+
                                 }break;
                                 case 3:{
                                     System.out.println("Enter your Name: ");
