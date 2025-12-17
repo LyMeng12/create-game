@@ -1,12 +1,18 @@
 package org.example;
 
-public class Student {
+import javax.security.auth.Subject;
+import java.util.ArrayList;
+
+public class Student extends Major {
     int ID;
     String Name;
     String Gender;
     int Age;
     String PhoneNumber;
-    public Student(int ID, String Name, String Gender, int Age, String PhoneNumber) {
+
+
+    public Student(int MajorID,String MajorName , int ID, String Name, String Gender, int Age, String PhoneNumber) {
+        super(MajorID,MajorName);
         this.ID = ID;
         this.Name = Name;
         this.Gender = Gender;
@@ -29,6 +35,6 @@ public class Student {
         return PhoneNumber;
     }
     public void diplayStudent(){
-        System.out.println("Student ID: " + getID() + " Name: " + getName() + " Gender: " + getGender() + " Age: " + getAge() + " PhoneNumber: " + getPhoneNumber() );
+        System.out.println("Student ID: " + getID() + " Name: " + getName() + " Gender: " + getGender() + " Age: " + getAge() + " PhoneNumber: " + getPhoneNumber() + " Major: " + getMajorName());
     }
 }

@@ -22,6 +22,7 @@ public class Oop {
         System.out.println("****************************************");
 //        System.out.println("This my School Management System.");
         while (done){
+            System.out.println("****************************************");
                 System.out.println("This my School Management System.");
                 System.out.println("1. New Student.");
                 System.out.println("2. Add Major.");
@@ -47,16 +48,24 @@ public class Oop {
                         int age = sc.nextInt();
                         System.out.print("Please enter the Student Phone Number: ");
                         String phone = sc.next();
-                        students.add(new Student(id,name,gender,age,phone));
+                        System.out.println("This is My Major Student");
+
+                        for(Major m : major){
+                            m.Display();
+                        }
+                        System.out.println("Choose Major:");
+                        int majorId = sc.nextInt();
+                        for(Major m : major){
+                            if(majorId==m.getMajorID()){
+                                students.add(new Student(m.getMajorID(),m.getMajorName(),id,name,gender,age,phone));
+                            }
+                        }
+
                     }break;
                     case 2:{
                         System.out.println("********************************");
                         for (Major m : major){
                             m.Display();
-                        }
-                        System.out.println("********************************");
-                        for (Student student : students){
-                            student.diplayStudent();
                         }
                         System.out.println("********************************");
                     }break;
@@ -105,7 +114,6 @@ public class Oop {
                                         switch (choose){
                                             case 1:{
                                                 int idmajor = 1;
-                                                int qty=0;
                                                 for (int i = 0; i < major.size(); i++){
                                                     idmajor++;
                                                 }
@@ -134,7 +142,7 @@ public class Oop {
                                                         }
                                                     }
                                                 }while (checkmajorname);
-                                                major.add(new Major(idmajor,namemajor,qty));
+                                                major.add(new Major(idmajor,namemajor));
                                             }break;
                                             case 2:{
                                                 for (Major maj : major) {

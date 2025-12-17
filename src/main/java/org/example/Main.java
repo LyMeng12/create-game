@@ -20,7 +20,7 @@ public class Main {
         while (again) {
 
             int mony;
-            System.out.println("Your Money:"+money+"$");
+            System.out.print("Your Money:"+money+"$");
             System.out.print("Place your money:");
             int payment = in.nextInt();
             money -= payment;
