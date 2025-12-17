@@ -21,7 +21,10 @@ public class Major {
         return MajorName;
     }
 
-    public void Display() {
+    public void DisplayNew() {
         System.out.println("Major ID: " + getMajorID()+ " Major Name: " + getMajorName());
+    }
+    public void Display() {
+        System.out.print("Major ID: " + getMajorID()+ " Major Name: " + getMajorName());
     }
 }

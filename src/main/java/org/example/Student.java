@@ -34,6 +34,9 @@ public class Student extends Major {
     public String getPhoneNumber() {
         return PhoneNumber;
     }
+    public String MajorName() {
+        return MajorName;
+    }
     public void diplayStudent(){
         System.out.println("Student ID: " + getID() + " Name: " + getName() + " Gender: " + getGender() + " Age: " + getAge() + " PhoneNumber: " + getPhoneNumber() + " Major: " + getMajorName());
     }

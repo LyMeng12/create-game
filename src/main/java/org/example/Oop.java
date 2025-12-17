@@ -51,7 +51,7 @@ public class Oop {
                         System.out.println("This is My Major Student");
 
                         for(Major m : major){
-                            m.Display();
+                            m.DisplayNew();
                         }
                         System.out.println("Choose Major:");
                         int majorId = sc.nextInt();
@@ -64,8 +64,18 @@ public class Oop {
                     }break;
                     case 2:{
                         System.out.println("********************************");
+
                         for (Major m : major){
                             m.Display();
+                            int count =0;
+                            for (Student s : students){
+                                if(s.getMajorName().equals(m.getMajorName())){
+                                    count++;
+                                }
+
+                            }
+                            System.out.print(" Qty: "+count);
+                            System.out.println();
                         }
                         System.out.println("********************************");
                     }break;
