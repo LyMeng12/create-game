@@ -131,9 +131,47 @@ public class Oop {
                                                     s.diplayStudent();
                                                 }
                                             }break;
-//                                            done
+//                                            done  test
                                             case 2:{
+                                                System.out.println("\tStudent Display 📋");
+                                                System.out.println("****************************************");
+                                                for (Student s : students){
+                                                    s.diplayStudent();
+                                                }
+                                                System.out.println("****************************************");
+                                                System.out.print("Enter ID Student you want to Edite: ");
+                                                System.out.println();
+                                                int id = sc.nextInt();
+                                                for (Student s : students){
+                                                    if (s.getID()==id){
+                                                        System.out.print("Please enter the Student name: ");
+                                                        String name = sc.next();
+                                                        System.out.print("Please enter the Student Gender: ");
+                                                        String gender = sc.next();
+                                                        while (!gender.equals("male") && !gender.equals("female")){
+                                                            System.out.print("Please enter again the Student Gender: ");
+                                                            gender = sc.next();
+                                                        }
+                                                        System.out.print("Please enter the Student Age: ");
+                                                        int age = sc.nextInt();
+                                                        System.out.print("Please enter the Student Phone Number: ");
+                                                        String phone = sc.next();
+                                                        System.out.println("This is My Major Student");
+                                                        String namemajor = "";
 
+                                                        for(Major m : major){
+                                                            m.DisplayNew();
+                                                        }
+                                                        System.out.print("Choose Major:");
+                                                        int majorId = sc.nextInt();
+                                                        for(Major m : major){
+                                                            if(majorId==m.getMajorID()){
+                                                                namemajor = m.getMajorName();
+                                                            }
+                                                        }
+                                                        s.SetStudent(name,gender,age,phone,majorId,namemajor);
+                                                    }
+                                                }
                                             }break;
 //                                            already
                                             case 3:{
@@ -270,9 +308,19 @@ public class Oop {
                                     }while (match);
 //                                done
                                 }break;
-//                                done
+//                                already
                                 case 3:{
-                                    System.out.println("Enter your Name: ");
+                                    System.out.println("\tDisplay Major 📋");
+                                    System.out.println("**********************************************************");
+                                    for(Major maj : major){
+                                        maj.Display();
+                                        System.out.println();
+                                    }
+                                    System.out.println("\tDiplay Student 🧑‍🎓");
+                                    System.out.println("**********************************************************");
+                                    for (Student s : students) {
+                                        s.diplayStudent();
+                                    }
                                 }break;
 //                                already
                                 case 4:{

@@ -37,6 +37,18 @@ public class Student extends Major {
     public String MajorName() {
         return MajorName;
     }
+
+    public void SetStudent(String name , String Gender, int Age, String PhoneNumber,int MajorID , String MajorName) {
+        this.Name = name;
+        this.Gender = Gender;
+        this.Age = Age;
+        this.PhoneNumber = PhoneNumber;
+        this.MajorID = MajorID;
+        this.MajorName = MajorName;
+    }
+
+
+
     public void diplayStudent(){
         System.out.println("Student ID: " + getID() + " Name: " + getName() + " Gender: " + getGender() + " Age: " + getAge() + " PhoneNumber: " + getPhoneNumber() + " Major: " + getMajorName());
     }
