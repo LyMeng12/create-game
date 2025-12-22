@@ -20,6 +20,9 @@ public class Major {
     public String getMajorName() {
         return MajorName;
     }
+    public void setMajorName(String MajorName) {
+        this.MajorName = MajorName;
+    }
 
     public void DisplayNew() {
         System.out.println("Major ID: " + getMajorID()+ " Major Name: " + getMajorName());

@@ -20,17 +20,17 @@ public class Oop {
         System.out.println("\tWelcome to SETCE Institute");
         System.out.println();
         System.out.println("****************************************");
-//        System.out.println("This my School Management System.");
         while (done){
-            System.out.println("****************************************");
-                System.out.println("This my School Management System.");
-                System.out.println("1. New Student.");
-                System.out.println("2. Add Major.");
-                System.out.println("3. Login Admin.");
-                System.out.println("4. Exit Program.");
+                System.out.println("****************************************");
+                System.out.println("\tThis my School Management System.");
+                System.out.println("1. New Student 🧑‍🎓");
+                System.out.println("2. Major 📋");
+                System.out.println("3. Login Admin 🔒");
+                System.out.println("4. Exit Program ❌");
                 System.out.print("Please Choose an Option: ");
                 int option = sc.nextInt();
                 switch (option){
+//                    already
                     case 1:{
                         int id =1;
                         for (int i = 0; i < students.size(); i++){
@@ -53,7 +53,7 @@ public class Oop {
                         for(Major m : major){
                             m.DisplayNew();
                         }
-                        System.out.println("Choose Major:");
+                        System.out.print("Choose Major:");
                         int majorId = sc.nextInt();
                         for(Major m : major){
                             if(majorId==m.getMajorID()){
@@ -62,6 +62,7 @@ public class Oop {
                         }
 
                     }break;
+//                    done
                     case 2:{
                         System.out.println("********************************");
 
@@ -100,28 +101,86 @@ public class Oop {
 
                         boolean system = true;
                         do{
-                            System.out.println("Welcome Admin "+username+ " 🦦");
-                            System.out.println("1.Student");
-                            System.out.println("2.Major");
-                            System.out.println("3.Display");
-                            System.out.println("4.Exit Admin");
+                            System.out.println("****************************************");
+                            System.out.println("\tWelcome Admin "+username.toUpperCase()+ " 🦦");
+                            System.out.println("1.Student 🧑‍🎓");
+                            System.out.println("2.Major 📍");
+                            System.out.println("3.Display 📋");
+                            System.out.println("4.Exit Admin ⬅️");
                             System.out.print("Please Choose an Option: ");
                             int adminoption = sc.nextInt();
                             switch (adminoption){
+//                                done
                                 case 1:{
-                                    System.out.println("Please enter your Name: ");
+                                    boolean student = true;
+                                    do{
+                                        System.out.println("****************************************");
+                                        System.out.println(" \tThis is a Student 🧑‍🎓");
+                                        System.out.println("1.Student Display 📋");
+                                        System.out.println("2.Edite Student ✏️");
+                                        System.out.println("3.delete Student 🗑️");
+                                        System.out.println("4.Exit");
+                                        System.out.print("Please Choose an Option: ");
+                                        adminoption = sc.nextInt();
+                                        switch (adminoption){
+//                                            already
+                                            case 1:{
+                                                System.out.println("\tStudent Display 📋");
+                                                System.out.println("****************************************");
+                                                for (Student s : students){
+                                                    s.diplayStudent();
+                                                }
+                                            }break;
+//                                            done
+                                            case 2:{
+
+                                            }break;
+//                                            already
+                                            case 3:{
+                                                System.out.println("\tStudent Delete 📋");
+                                                System.out.println("****************************************");
+                                                for(Student s : students){
+                                                    s.diplayStudent();
+                                                }
+                                                System.out.println("****************************************");
+                                                boolean studentdelete=true;
+                                                int ind=0;
+                                                do{
+                                                    System.out.println("Enter Id You want to delete: ");
+                                                    int id = sc.nextInt();
+                                                    for (Student s : students){
+                                                        if(s.getMajorID()==id){
+                                                            studentdelete=false;
+                                                            break;
+                                                        }
+                                                        ind++;
+                                                    }
+                                                }while (studentdelete);
+                                                students.remove(ind);
+                                            }break;
+//                                            already
+                                            case 4:{
+                                                student=false;
+                                            }break;
+                                        }
+                                    }while (student);
+
                                 }break;
+//                                already
                                 case 2:{
                                     boolean match = true;
                                     do {
-                                        System.out.println("This is a Major");
-                                        System.out.println("1.Add Major");
-                                        System.out.println("2.Edit Major");
-                                        System.out.println("3.Delete Major");
-                                        System.out.println("4.Exit");
+                                        System.out.println("****************************************");
+                                        System.out.println("\tThis is a Major");
+                                        System.out.println("1.Add Major ➕");
+                                        System.out.println("2.Display Major 📋");
+                                        System.out.println("3.Delete Major ✖️");
+                                        System.out.println("4.Edit major 🔄️");
+                                        System.out.println("5.Exit ⬅️");
                                         System.out.print("Please Choose an Option: ");
                                         int choose = sc.nextInt();
                                         switch (choose){
+//                                            already
                                             case 1:{
                                                 int idmajor = 1;
                                                 for (int i = 0; i < major.size(); i++){
@@ -141,46 +200,92 @@ public class Oop {
                                                         checkmajorname = false;
                                                         for (Major maj : major) {
                                                             if (maj.getMajorName().equalsIgnoreCase(name)) {
-                                                                checkmajorname = true; // duplicate found
+                                                                checkmajorname = true;
                                                                 System.out.println("Major name already exists! Please enter again.");
                                                                 break;
                                                             }
                                                         }
 
                                                         if (!checkmajorname) {
-                                                            namemajor = name; // valid name
+                                                            namemajor = name;
                                                         }
                                                     }
                                                 }while (checkmajorname);
                                                 major.add(new Major(idmajor,namemajor));
                                             }break;
+//                                            already
                                             case 2:{
+                                                System.out.println("Display Major <UNK>");
                                                 for (Major maj : major) {
                                                     maj.Display();
+                                                    System.out.println();
                                                 }
                                             }break;
-                                            case 3:{}break;
+//                                            already
+                                            case 3:{
+                                                System.out.println("\tThis is a Display Major 📋");
+                                                for(Major maj : major){
+                                                    maj.Display();
+                                                    System.out.println();
+                                                }
+                                                System.out.println("*****************************");
+                                                boolean check = true;
+                                                int index = 0;
+                                                do {
+                                                    System.out.print("Enter name major you want to delete🗑️: ");
+                                                    String name = sc.next().toUpperCase();
+                                                    for (Major maj : major) {
+                                                        if (maj.getMajorName().equals(name)) {
+                                                            check = false;
+                                                            break;
+                                                        }
+                                                        index++;
+                                                    }
+                                                }while (check);
+                                                major.remove(index);
+
+                                            }break;
+//                                            already
                                             case 4:{
+                                                boolean check = true;
+                                                do {
+                                                    System.out.print("Enter ID to Edited Major ✏️:");
+                                                    int id = sc.nextInt();
+                                                    for (Major maj : major) {
+                                                        if (maj.getMajorID()==id) {
+                                                            System.out.print("Enter new name: ");
+                                                            String name = sc.next().toUpperCase();
+                                                            maj.setMajorName(name);
+                                                            check = false;
+                                                            break;
+                                                        }
+                                                    }
+                                                }while (check);
+                                            }break;
+//                                            already
+                                            case 5:{
                                                 match = false;
                                             }break;
                                         }
                                     }while (match);
-
+//                                done
                                 }break;
+//                                done
                                 case 3:{
                                     System.out.println("Enter your Name: ");
                                 }break;
+//                                already
                                 case 4:{
                                     system = false;
                                 }break;
                             }
                         }while (system);
                     }break;
+//                    already
                     case 4:{
                         done = false;
                     }break;
                 }
-//            }
         }
         System.out.println("System Program Terminated.");
     }
