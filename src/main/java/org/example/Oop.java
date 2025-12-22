@@ -181,20 +181,27 @@ public class Oop {
                                                     s.diplayStudent();
                                                 }
                                                 System.out.println("****************************************");
+                                                int id;
                                                 boolean studentdelete=true;
                                                 int ind=0;
                                                 do{
-                                                    System.out.println("Enter Id You want to delete: ");
-                                                    int id = sc.nextInt();
+                                                    System.out.print("Enter Id You want to delete: ");
+                                                    id = sc.nextInt();
                                                     for (Student s : students){
-                                                        if(s.getMajorID()==id){
+                                                        if(s.getID()==id){
                                                             studentdelete=false;
                                                             break;
                                                         }
                                                         ind++;
                                                     }
+
                                                 }while (studentdelete);
                                                 students.remove(ind);
+                                                for(Student s : students){
+                                                    if(s.getID()>id){
+                                                        s.SetID(id++);
+                                                    }
+                                                }
                                             }break;
 //                                            already
                                             case 4:{
@@ -268,19 +275,26 @@ public class Oop {
                                                 }
                                                 System.out.println("*****************************");
                                                 boolean check = true;
-                                                int index = 0;
+                                                int inr;
                                                 do {
+//                                                    int index = 0;
                                                     System.out.print("Enter name major you want to delete🗑️: ");
-                                                    String name = sc.next().toUpperCase();
+                                                    inr = sc.nextInt();
                                                     for (Major maj : major) {
-                                                        if (maj.getMajorName().equals(name)) {
+                                                        if (maj.getMajorID()==inr) {
                                                             check = false;
                                                             break;
                                                         }
-                                                        index++;
+//                                                        index++;
                                                     }
+//                                                    inr=index;
                                                 }while (check);
-                                                major.remove(index);
+                                                major.remove(inr);
+                                                for(Major maj : major){
+                                                    if(maj.getMajorID()>inr){
+                                                        maj.SetMajorID(inr++);
+                                                    }
+                                                }
 
                                             }break;
 //                                            already

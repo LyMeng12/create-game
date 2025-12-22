@@ -23,6 +23,9 @@ public class Major {
     public void setMajorName(String MajorName) {
         this.MajorName = MajorName;
     }
+    public void SetMajorID(int MajorID) {
+        this.MajorID = MajorID;
+    }
 
     public void DisplayNew() {
         System.out.println("Major ID: " + getMajorID()+ " Major Name: " + getMajorName());

@@ -46,6 +46,9 @@ public class Student extends Major {
         this.MajorID = MajorID;
         this.MajorName = MajorName;
     }
+    public void SetID(int ID) {
+        this.ID = ID;
+    }
 
 
 
