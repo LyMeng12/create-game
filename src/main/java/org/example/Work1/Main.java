@@ -23,7 +23,7 @@ public class Main {
             System.out.println("6.Exit 🦭");
             System.out.print("your choice: ");
             int choice = sc.nextInt();
-            while (choice <0 || choice > 4) {
+            while (choice <0 || choice > 6) {
                 System.out.println("Please enter a valid choice");
                 System.out.print("your choice again: ");
                 choice = sc.nextInt();
@@ -148,7 +148,47 @@ public class Main {
                 }break;
 //                done
                 case 5:{
+                    boolean fand=true;
+                    do{
+                        System.out.println("*****************************************");
+                        System.out.println("\t\t\tEdited Travel 🚕");
+                        System.out.println("1.Taxi Travel");
+                        System.out.println("2.Bus Travel 🚌");
+                        System.out.println("3.Train Travel 🚄");
+                        System.out.println("4.Exit");
+                        System.out.print("Enter Choice: ");
+                        int number = sc.nextInt();
+                        switch(number){
+//                            done
+                            case 1:{
+                                System.out.println("*****************************************");
+                                System.out.println();
+                                System.out.println("This is a Taxi Travel Customer not Payment.");
+                                for(Taxi t: taxi){
+                                    if(t.Payment().equals("Not Payment")){
+                                        t.Display();
+                                    }
+                                }
+                                System.out.println("********************************************");
+                                boolean donea=true;
+                                do {
+                                    System.out.print("Enter name you want to payment: ");
+                                    String name = sc.next();
+//                                    done
+                                    System.out.println("Name is not have!");
+                                }while (donea);
 
+                            }break;
+//                            done
+                            case 2:{}break;
+//                            done
+                            case 3:{}break;
+//                            already
+                            case 4:{
+                                fand=false;
+                            }break;
+                        }
+                    }while(fand);
                 }break;
 //                already
                 case 6:{

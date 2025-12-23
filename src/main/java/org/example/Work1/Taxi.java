@@ -8,10 +8,17 @@ public class Taxi extends Transport{
         this.Fare = Fare;
     }
 
+    public void Price(double price) {
+        this.payment=price;
+    }
+    public double getpayment() {
+        return payment;
+    }
+
 
     @Override
     public String Payment(){
-        if(payment==Fare){
+        if(getpayment()==Fare){
             return "Already";
         } else {
             return "Not Payment";
@@ -20,6 +27,6 @@ public class Taxi extends Transport{
 
 
     public void Display(){
-        System.out.println("Name: "+name+"  Used: Taxi"+" Km: "+km+" Fare: "+Fare +"$"+ " Payment: "+payment + "Payment Already: "+Payment());
+        System.out.println("Name: "+name+"  Used: Taxi"+" Km: "+km+" Fare: "+Fare +"$"+ " Payment: "+payment +"$ "+ "Payment Already: "+Payment());
     }
 }
