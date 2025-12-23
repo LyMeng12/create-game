@@ -4,7 +4,6 @@ abstract class Transport {
     String name;
     double km;
     double payment;
-//    int money;
 
 
     public Transport(String name, double km , double payment) {
@@ -13,12 +12,6 @@ abstract class Transport {
         this.payment = payment;
     }
     abstract String Payment();
-
-    abstract  double CaculateFare();
-
-    public void print() {
-
-    }
 
 
 }

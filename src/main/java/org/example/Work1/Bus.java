@@ -1,21 +1,18 @@
 package org.example.Work1;
 
 public class Bus extends Transport{
-    double  distance = 0.5;
-    double money = 1;
     double Fare;
 
-    public Bus(String name,double km,double payment) {
+    public Bus(String name,double km,double payment,double Fare) {
         super(name,km,payment);
+        this.Fare = Fare;
     }
-    @Override
-    public double CaculateFare(){
-         return Fare = money+(km*distance);
-    }
+
+
 
     @Override
     public String Payment(){
-        if(payment==CaculateFare()){
+        if(payment==Fare){
             return "Already";
         } else {
             return "Not Payment";
@@ -23,7 +20,7 @@ public class Bus extends Transport{
     }
 
     public void Display(){
-        System.out.println("Name: "+name+"  Used: Bus"+" Km: "+km+" Fare: "+CaculateFare() + " Payment: "+payment + "Payment Already: "+Payment());
+        System.out.println("Name: "+name+"  Used: Bus"+" Km: "+km+" Fare: "+Fare+"$"+ " Payment: "+payment + "Payment Already: "+Payment());
     }
 
 }
