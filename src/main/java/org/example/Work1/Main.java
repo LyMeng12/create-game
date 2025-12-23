@@ -152,7 +152,7 @@ public class Main {
                     do{
                         System.out.println("*****************************************");
                         System.out.println("\t\t\tEdited Travel 🚕");
-                        System.out.println("1.Taxi Travel");
+                        System.out.println("1.Taxi Travel 🚕");
                         System.out.println("2.Bus Travel 🚌");
                         System.out.println("3.Train Travel 🚄");
                         System.out.println("4.Exit");
@@ -161,28 +161,112 @@ public class Main {
                         switch(number){
 //                            done
                             case 1:{
+                                boolean dom = false;
                                 System.out.println("*****************************************");
                                 System.out.println();
                                 System.out.println("This is a Taxi Travel Customer not Payment.");
                                 for(Taxi t: taxi){
                                     if(t.Payment().equals("Not Payment")){
                                         t.Display();
+                                        dom=true;
                                     }
                                 }
                                 System.out.println("********************************************");
-                                boolean donea=true;
-                                do {
-                                    System.out.print("Enter name you want to payment: ");
-                                    String name = sc.next();
-//                                    done
-                                    System.out.println("Name is not have!");
-                                }while (donea);
 
+                                while(dom) {
+                                    System.out.print("Choose your name :");
+                                    String name = sc.next();
+                                    for(Taxi t: taxi){
+                                        if (t.name.equals(name)){
+                                            System.out.println("You need "+t.Fare+"$");
+                                            System.out.print("Payment new: $");
+                                            double price=sc.nextDouble();
+                                            while (price!=t.Fare){
+                                                System.out.print("Payment again:$");
+                                                price = sc.nextDouble();
+                                            }
+                                            t.Price(price);
+                                            dom=false;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(!dom){
+                                    System.out.println("Not have Cusmoer.");
+                                }
+                            }break;
+//                            already
+                            case 2:{
+                                boolean dom = false;
+                                System.out.println("*****************************************");
+                                System.out.println();
+                                System.out.println("This is a Bus Travel Customer not Payment.");
+                                for(Bus t: bus){
+                                    if(t.Payment().equals("Not Payment")){
+                                        t.Display();
+                                        dom=true;
+                                    }
+                                }
+                                System.out.println("********************************************");
+
+                                while(dom) {
+                                    System.out.print("Choose your name :");
+                                    String name = sc.next();
+                                    for(Bus t: bus){
+                                        if (t.name.equals(name)){
+                                            System.out.println("You need "+t.Fare+"$");
+                                            System.out.print("Payment new: $");
+                                            double price=sc.nextDouble();
+                                            while (price!=t.Fare){
+                                                System.out.print("Payment again:$");
+                                                price = sc.nextDouble();
+                                            }
+                                            t.Priec(price);
+                                            dom=false;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(!dom){
+                                    System.out.println("Not have Cusmoer.");
+                                }
                             }break;
 //                            done
-                            case 2:{}break;
-//                            done
-                            case 3:{}break;
+                            case 3:{
+                                boolean dom = false;
+                                System.out.println("*****************************************");
+                                System.out.println();
+                                System.out.println("This is a Train Travel Customer not Payment.");
+                                for(Train t: train){
+                                    if(t.Payment().equals("Not Payment")){
+                                        t.Display();
+                                        dom=true;
+                                    }
+                                }
+                                System.out.println("********************************************");
+
+                                while(dom) {
+                                    System.out.print("Choose your name :");
+                                    String name = sc.next();
+                                    for(Train t: train){
+                                        if (t.name.equals(name)){
+                                            System.out.println("You need "+t.Fare+"$");
+                                            System.out.print("Payment new: $");
+                                            double price=sc.nextDouble();
+                                            while (price!=t.Fare){
+                                                System.out.print("Payment again:$");
+                                                price = sc.nextDouble();
+                                            }
+                                            t.Price(price);
+                                            dom=false;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(!dom){
+                                    System.out.println("Not have Cusmoer.");
+                                }
+                            }break;
 //                            already
                             case 4:{
                                 fand=false;
